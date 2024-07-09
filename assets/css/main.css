@@ -3310,6 +3310,7 @@ input, select, textarea {
 				grid-template-columns: repeat(auto-fit, minmax(550px, 1fr));
 				place-content: center;
 				place-items: center;
+				padding-left: 3rem;
 			}
 
 			#wrapper .galleryGrid {
