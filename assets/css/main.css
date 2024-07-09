@@ -2926,7 +2926,7 @@ input, select, textarea {
 		}
 	}
 
-	.gallery {
+	.galleryContent {
 		display: grid;
 		grid-template-columns: repeat(auto-fit, minmax(25dvw, 1fr));
 		padding: .25rem;
@@ -2935,23 +2935,19 @@ input, select, textarea {
 		max-width: 55dvw;
 	}
 
-		.gallery .galleryCard {
+		.galleryCard {
 			max-width: 20dvw;
 			min-height: 20dvh;
 			border-radius: .5rem;
 		}
 
-			.gallery .galleryCard img {
+			.galleryCard img {
 				width: 100%;
 				aspect-ratio: 1;
 				object-fit: cover;
 			}
 
-			.gallery a.portrait img {
-				height: 30vw;
-			}
-
-		.gallery .modal {
+		.galleryContent .modal {
 			display: -moz-flex;
 			display: -webkit-flex;
 			display: -ms-flex;
@@ -2986,7 +2982,7 @@ input, select, textarea {
 			z-index: 0;
 		}
 
-			.gallery .modal:before {
+			.galleryContent .modal:before {
 				-moz-animation: gallery-modal-spinner 1s infinite linear;
 				-webkit-animation: gallery-modal-spinner 1s infinite linear;
 				-ms-animation: gallery-modal-spinner 1s infinite linear;
@@ -3014,7 +3010,7 @@ input, select, textarea {
 				width: 4rem;
 			}
 
-			.gallery .modal:after {
+			.galleryContent .modal:after {
 				background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' width='64px' height='64px' viewBox='0 0 64 64' zoomAndPan='disable'%3E%3Cstyle%3Eline %7Bstroke: %23000000%3Bstroke-width: 2px%3B%7D%3C/style%3E%3Cline x1='20' y1='20' x2='44' y2='44' /%3E%3Cline x1='20' y1='44' x2='44' y2='20' /%3E%3C/svg%3E");
 				background-position: center;
 				background-repeat: no-repeat;
@@ -3029,7 +3025,7 @@ input, select, textarea {
 				width: 4rem;
 			}
 
-			.gallery .modal .inner {
+			.galleryContent .modal .inner {
 				-moz-transform: translateY(0.75rem);
 				-webkit-transform: translateY(0.75rem);
 				-ms-transform: translateY(0.75rem);
@@ -3041,25 +3037,25 @@ input, select, textarea {
 				opacity: 0;
 			}
 
-				.gallery .modal .inner img {
+				.galleryContent .modal .inner img {
 					box-shadow: 0 1rem 3rem 0 rgba(0, 0, 0, 0.35);
 					display: block;
 					max-height: 90vh;
 					max-width: 90vw;
 				}
 
-			.gallery .modal.visible {
+			.galleryContent .modal.visible {
 				pointer-events: auto;
 				opacity: 1;
 				visibility: visible;
 				z-index: 11000;
 			}
 
-				.gallery .modal.visible:before {
+				.galleryContent .modal.visible:before {
 					opacity: 1;
 				}
 
-			.gallery .modal.loaded .inner {
+			.galleryContent .modal.loaded .inner {
 				-moz-transform: translateY(0);
 				-webkit-transform: translateY(0);
 				-ms-transform: translateY(0);
@@ -3071,7 +3067,7 @@ input, select, textarea {
 				opacity: 1;
 			}
 
-			.gallery .modal.loaded:before {
+			.galleryContent .modal.loaded:before {
 				-moz-transition-delay: 0s;
 				-webkit-transition-delay: 0s;
 				-ms-transition-delay: 0s;
@@ -3081,15 +3077,15 @@ input, select, textarea {
 
 		@media screen and (max-width: 1152px) {
 
-			.gallery a img {
+			.galleryContent a img {
 				height: 20rem;
 			}
 
-			.gallery a.landscape img {
+			.galleryContent a.landscape img {
 				height: 25rem;
 			}
 
-			.gallery a.portrait img {
+			.galleryContent a.portrait img {
 				height: 25rem;
 			}
 
@@ -3268,6 +3264,13 @@ input, select, textarea {
 				font-size: .5rem;
 			}
 
+			#wrapper .testimonialSection {
+				display: grid;
+				grid-template-columns: repeat(auto-fit, minmax(550px, 1fr));
+				place-content: center;
+				min-height: 100dvh;
+			}
+
 			#wrapper .imageGrid {
 				display: grid;
 				max-width: 55dvw;
@@ -3301,22 +3304,30 @@ input, select, textarea {
 			}
 
 			#wrapper .gallerySection {
-				max-width: 55dvw;
-				height: 100dvh;
+				max-width: 45dvw;
+				min-height: 100dvh;
 				display: grid;
 				grid-template-columns: repeat(auto-fit, minmax(550px, 1fr));
-
+				place-content: center;
+				place-items: center;
 			}
 
 			#wrapper .galleryGrid {
-				margin-left: 2rem;
 				display: grid;
-				grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+				gap: 1rem;
+				min-height: 100dvh;
+				max-width: 55dvw;
+				grid-template-columns: repeat(auto-fit, 
+					minmax(250px, 1fr));
+				margin-inline: auto;
+				padding-top: 2rem;
+				place-content: center;
+				margin-left: 3rem;
 				
 			}
 
 			#wrapper .galleryGrid .galleryCard {
-				width: 250px;
+				width: 249px;
 			}
 
 
@@ -3394,7 +3405,10 @@ input, select, textarea {
 
 				#wrapper > section.intro > header {
 					padding-top: 4rem;
+					padding-left: 2rem;
 					max-width: 50dvw;
+					place-content: center;
+					place-items: center;
 				}
 				
 					#wrapper > section.intro > header > h1 {
@@ -3434,6 +3448,16 @@ input, select, textarea {
 						object-fit: cover;
 						aspect-ratio: 1;
 						border-radius: .5rem;
+					}
+
+					#first, .benefitsSection {
+						min-height: 100dvh;
+						min-width: 55dvw;
+						display: grid;
+						grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+						place-content: center;
+						place-items: center;
+						
 					}
 
 					@media (max-width: 988px) {
